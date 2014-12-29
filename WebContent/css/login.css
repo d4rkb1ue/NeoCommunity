@@ -1,0 +1,139 @@
+/***全局***/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	width: 100%;
+	height: 100%;
+	font-family: "微软雅黑";
+}
+/***内容***/
+
+.content {
+	width: 1000px;
+	height: 600px;
+	margin: 0 auto;
+	position: relative;
+	top: 50px;
+}
+.contentleft {
+	width: 60%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.contentleft img {
+	width: 470px;
+	height: 470px;
+	margin-top: 15px;
+	margin-left: 20px;
+}
+.contentright {
+	width: 40%;
+	height: 100%;
+	position: absolute;
+	left: 60%;
+	top: 0;
+}
+#crtop {
+	width: 100%;
+	height: 100px;
+	margin-top: 30px;
+}
+.crtop img {
+	width: 40px;
+	height: 40px;
+}
+#crtop h2 {
+	margin-top: -50px;
+	margin-left: 70px;
+	font-size: 35px;
+	color: #0272c8;
+}
+#crbottom {
+	width: 100%;
+	height: 400px;
+}
+#crbottom span {
+	font-family: "微软雅黑";
+}
+.input {
+	display: block;
+	width: 300px;
+	height: 30px;
+	text-align: center;
+	margin-top: 15px;
+}
+#ckbox {
+	width: 15px;
+	height: 15px;
+	margin-top: 10px;
+}
+form span {
+	position: relative;
+	top: -2px;
+	font-size: 15px;
+}
+#loginbtn {
+	width: 90px;
+	height: 30px;
+	font-weight: bold;
+	display: block;
+	margin-top: 35px;
+	background-color: #1E82CC;
+	color: #fff;
+	border: none;
+}
+#notlogin {
+	display: block;
+	margin-top: 40px;
+	color: #0272C8;
+	font-size: 15px;
+	font-family: "微软雅黑";
+	text-decoration: none;
+}
+/***底部***/
+
+.footer {
+	width: 100%;
+	height: 90px;
+	position: fixed;
+	bottom: 0;
+	background-color: #eeeeee;
+}
+#footercon {
+	width: 1000px;
+	height: 100%;
+	margin: 0 auto;
+}
+#NEO {
+	width: 30px;
+	height: 30px;
+	float: right;
+	margin-top: 15px;
+	margin-right: 103px;
+	color: #919191;
+	font-weight: bold;
+}
+#members {
+	width: 500px;
+	height: 30px;
+	float: right;
+	margin-top: 53px;
+	margin-right: -62px;
+}
+#members p {
+	display: block;
+	float: right;
+	margin-right:25px;
+	font-size: 15px;
+}
+.at{
+	color: #919191;
+}
+.name{
+	color: #1e6beb;
+}

@@ -9,6 +9,7 @@
 <title>Neo Initial System Index</title>
 </head>
 <body>
-<h1>Login as ?(Todo)</h1>
+<h1>Login as </h1>
+
 </body>
 </html>
