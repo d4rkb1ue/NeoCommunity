@@ -47,7 +47,7 @@
 				<div id="members">
 					<p class="at">@2015 NEO</p>
 					<p class="name">吴庆龄</p>
-					<p class="name">路亚汇</p>
+					<p class="name">路亚辉</p>
 					<p class="name">康媛</p>
 					<p class="name">苏圣</p>
 				</div>
