@@ -1,5 +1,5 @@
 ####注意关键字冲突，在MYSQL里面可以正常create的表，在hibernate里面可能是关键字，无法使用的。
-###############
+#################
 
 create database neo;
 
