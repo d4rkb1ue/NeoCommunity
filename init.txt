@@ -1,14 +1,18 @@
+####注意关键字冲突，在MYSQL里面可以正常create的表，在hibernate里面可能是关键字，无法使用的。
+###############
+
 create database neo;
+
 use neo;
 CREATE TABLE `user` (
   `username` varchar(15) NOT NULL,
   `password` varchar(18) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `group` varchar(10) NOT NULL DEFAULT 'owner',
+  `usergroup` varchar(10) NOT NULL DEFAULT 'owner',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
-INSERT INTO `neo`.`user` (`username`, `password`, `group`) VALUES ('admin', '1', 'user');
-INSERT INTO `neo`.`user` (`username`, `password`, `group`) VALUES ('boss', '1', 'user');
+INSERT INTO `neo`.`user` (`username`, `password`, `usergroup`) VALUES ('admin', '1', 'admin');
+INSERT INTO `neo`.`user` (`username`, `password`, `usergroup`) VALUES ('boss', '1', 'boss');

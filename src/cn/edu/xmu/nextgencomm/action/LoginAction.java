@@ -7,7 +7,9 @@ import cn.edu.xmu.nextgencomm.bean.UserBean;
 import cn.edu.xmu.nextgencomm.dao.UserDao;
 
 
+import cn.edu.xmu.nextgencomm.model.Test;
 import cn.edu.xmu.nextgencomm.model.User;
+import cn.edu.xmu.nextgencomm.service.TestService;
 import cn.edu.xmu.nextgencomm.service.UserService;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -24,17 +26,18 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserBean>{
 	private UserService userService;
 	private User user;
 	
+
 	private static final long serialVersionUID = 1L;
 	public String execute()	{
 		user = userService.getUser(userBean);
 		if(user!=null){
-			//userService.save3();	
 			return "success";
 		}
 		//System.out.println("Fail");
 		return "fail";
-		
+
 	}
+	
 	@Override
 	public UserBean getModel() {
 		// TODO Auto-generated method stub

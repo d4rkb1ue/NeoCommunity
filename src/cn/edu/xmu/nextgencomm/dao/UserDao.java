@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.edu.xmu.nextgencomm.bean.UserBean;
+import cn.edu.xmu.nextgencomm.model.Test;
 import cn.edu.xmu.nextgencomm.model.User;
 
 @Repository("userDao")
@@ -28,8 +29,7 @@ public class UserDao {
 		return (User)users.get(0);
 		
 	}
-	public void save(User user) {
+	public void saveUser(User user) {
 		sessionFactory.getCurrentSession().saveOrUpdate(user);
-		//sessionFactory.getCurrentSession().flush();
 	}
 }
