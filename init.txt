@@ -1,0 +1,14 @@
+create database neo;
+use neo;
+CREATE TABLE `user` (
+  `username` varchar(15) NOT NULL,
+  `password` varchar(18) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `group` varchar(10) NOT NULL DEFAULT 'owner',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+INSERT INTO `neo`.`user` (`username`, `password`, `group`) VALUES ('admin', '1', 'user');
+INSERT INTO `neo`.`user` (`username`, `password`, `group`) VALUES ('boss', '1', 'user');
