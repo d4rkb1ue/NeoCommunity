@@ -24,5 +24,11 @@ public class UserService {
 		}
 		return u;
 	}
+	public void save(User user) {
+		userDao.save(user);
+	}
+	public void save2(User user) {
+		user.setGroup("ddd");
+	}
 
 }

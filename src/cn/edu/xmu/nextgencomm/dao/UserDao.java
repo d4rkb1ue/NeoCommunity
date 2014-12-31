@@ -28,4 +28,8 @@ public class UserDao {
 		return (User)users.get(0);
 		
 	}
+	public void save(User user) {
+		sessionFactory.getCurrentSession().saveOrUpdate(user);
+		sessionFactory.getCurrentSession().flush();
+	}
 }

@@ -28,7 +28,10 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserBean>{
 	public String execute()	{
 		user = userService.getUser(userBean);
 		if(user!=null){
-			//System.out.println("Success");
+			System.out.print(user.getGroup()+"-->");
+			user.setGroup("aa");
+			userService.save(user);
+			System.out.println(user.getGroup());
 			return "success";
 		}
 		//System.out.println("Fail");
