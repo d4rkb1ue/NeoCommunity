@@ -1,5 +1,6 @@
 package cn.edu.xmu.nextgencomm.action;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.edu.xmu.nextgencomm.bean.UserBean;
@@ -7,6 +8,7 @@ import cn.edu.xmu.nextgencomm.dao.UserDao;
 
 
 import cn.edu.xmu.nextgencomm.model.User;
+import cn.edu.xmu.nextgencomm.service.UserService;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -19,12 +21,12 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserBean>{
 	@Autowired
 	private UserBean userBean;
 	@Autowired
-	private UserDao userDao;
+	private UserService userService;
 	private User user;
 	
 	private static final long serialVersionUID = 1L;
 	public String execute()	{
-		user = userDao.getUser(userBean);
+		user = userService.getUser(userBean);
 		if(user!=null){
 			//System.out.println("Success");
 			return "success";
