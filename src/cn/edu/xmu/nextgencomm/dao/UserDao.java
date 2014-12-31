@@ -30,6 +30,6 @@ public class UserDao {
 	}
 	public void save(User user) {
 		sessionFactory.getCurrentSession().saveOrUpdate(user);
-		sessionFactory.getCurrentSession().flush();
+		//sessionFactory.getCurrentSession().flush();
 	}
 }
