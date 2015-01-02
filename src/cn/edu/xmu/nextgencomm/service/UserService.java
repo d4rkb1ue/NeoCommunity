@@ -17,7 +17,7 @@ public class UserService {
 
 	public User getUser(UserBean userBean) {
 		User u = userDao.getUser(userBean);
-		if (userBean.getPassword() == null
+		if (userBean.getPassword() == null || u == null 
 				|| !u.getPassword().equals(userBean.getPassword())) {
 
 			return null;
