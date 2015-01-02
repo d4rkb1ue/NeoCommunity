@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.edu.xmu.nextgencomm.model.Fee" lazy="false"
+		table="fee">
+		<composite-id>
+			<key-property name="serialNum" type="string"></key-property>
+			<key-property name="date" type="java.sql.Date"></key-property>
+		</composite-id>
+		<property name="waterFee" type="double" not-null="true"
+			column="waterFee" />
+		<property name="electricityFee" type="double" not-null="true"
+			column="electricityFee" />
+		<property name="wasteFee" type="double" column="wasteFee" />
+		<property name="carportFee" type="double" column="carportFee" />
+		<property name="publicLightFee" type="double" column="publicLightFee" />
+		<property name="publicElevatorFee" type="double" column="publicElevatorFee" />
+		<property name="propertyFee" type="double" column="propertyFee" />
+		<property name="lateFee" type="double" column="lateFee" />
+		<many-to-one name="house" cascade="all"
+			class="cn.edu.xmu.nextgencomm.model.House" not-null="true" column="house_id"></many-to-one>
+	</class>
+</hibernate-mapping>

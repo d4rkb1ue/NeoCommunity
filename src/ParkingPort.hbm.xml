@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.edu.xmu.nextgencomm.model.ParkingPort" lazy="false"
+		table="parkingPort">
+		<id name="id" column="pp_id">
+			<generator class="native" />
+		</id>
+		<property name="type" column="type" type="string" not-null="true"></property>
+		<property name="location" column="location" type="string"
+			not-null="true"></property>
+		<property name="status" column="status" type="int" not-null="true"></property>
+		<many-to-one name="house" cascade="all"
+			class="cn.edu.xmu.nextgencomm.model.House" column="house_id"></many-to-one>
+	</class>
+</hibernate-mapping>

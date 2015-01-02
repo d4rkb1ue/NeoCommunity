@@ -29,7 +29,14 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 		<property name="annotatedClasses">
 			<list>
 				<value>cn.edu.xmu.nextgencomm.model.User</value>
-				<value>cn.edu.xmu.nextgencomm.model.Test</value>
+				<value>cn.edu.xmu.nextgencomm.model.House</value>
+			</list>
+		</property>
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:Dosage.hbm.xml</value>
+				<value>classpath:Fee.hbm.xml</value>
+				<value>classpath:ParkingPort.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -48,6 +55,7 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 	<!-- Database Configuration End Here -->
 
 	<bean id="login" class="cn.edu.xmu.nextgencomm.action.LoginAction" />
-	<bean id="test" class="cn.edu.xmu.nextgencomm.action.TestAction" />
-	<bean id="userBean" class="cn.edu.xmu.nextgencomm.bean.UserBean"/>
+	<bean id="addHouse" class="cn.edu.xmu.nextgencomm.action.AddHouseAction" />
+	<bean id="addDosage" class="cn.edu.xmu.nextgencomm.action.AddDosageAction" />
+	<bean id="userBean" class="cn.edu.xmu.nextgencomm.bean.UserBean" />
 </beans>

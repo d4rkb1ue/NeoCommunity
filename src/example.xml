@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<fees>
+ 
+	<private-fee>
+		<name>water-fee</name>
+		<display-name>水费</display-name>
+		<!-- public or private-->
+		<!--ladder or line -->
+		<calulate-style>ladders</calulate-style>
+		<!-- waterfeeService.getDelta() -->
+		
+		<property>water-usage</property>		
+		<!-- Increase ladder also work in the decrease ladder-->
+		<ladders>
+			<ladder from="0">0.5</ladder>
+			<ladder from="5">0.7</ladder>
+			<ladder from="10">1.0</ladder>
+		</ladders>
+		
+	</private-fee>
+	 
+	<private-fee>
+		<name>electric-fee</name>
+		<display-name>电费</display-name>
+		
+		<calulate-style>line</calulate-style>
+		<property>electric-usage</property>
+		<line>0.95</line>
+	</private-fee>
+	<!-- 
+	<private-fee>
+		<name>electric-fee</name>
+		<display-name>电附加费</display-name>
+		
+		<calulate-style>ladders</calulate-style>
+		<property>electric-usage</property>
+		<ladders>
+			<ladder from="0">0.05</ladder>
+			<ladder from="50">0.1</ladder>
+			<ladder from="100">0.22</ladder>
+		</ladders>
+	</private-fee>
+	 -->
+	<private-fee>
+		<name>manage-fee</name>
+		<display-name>物业费</display-name>
+		
+		<calulate-style>line</calulate-style>
+		<property>area</property>
+		<line>1.2</line>
+	</private-fee>
+	
+	<private-fee>
+		<name>parking-port-fee</name>
+		<display-name>车位费</display-name>
+		
+		<calulate-style>items</calulate-style>
+		<property>parking-port</property>
+		<items>
+			<item type="地上">1000</item>
+			<item type="地下">800</item>			
+		</items>
+	</private-fee>
+	
+	<private-fee>
+		<name>parking-port-fee</name>
+		<display-name>垃圾处理费</display-name>
+		<calulate-style>fix</calulate-style>
+		<fix>100</fix>
+	</private-fee>
+	
+	<!--
+	<public-fee>
+		<name>elevator-fee</name>
+		<display-name>公共电梯费</display-name>
+		<properties>
+			<property>floor</property>
+			<property>area</property>
+		</properties>
+		涉及到这是什么级别的分摊 
+			因为房间号如同：00 05 13 05 （00->住户 05->5号楼 13->13层 05->room 05)
+			故若有一个公共电梯，其编号为 01 05 00 01 （5号楼的1号电梯，00->级别为楼级）
+				首先根据层数进行分摊。1-18层有不同的分摊比例。
+				之后根据每层的面积进行分摊。按面积比例分摊。
+		<divide-by order="1">
+			<property>floor</property>
+			<divide-style>match</divide-style>
+			<match>
+				<map property="1">0</map>
+				<map property="2">0.2</map>
+				<map property="3">0.3</map>
+				<map property="4">0.5</map>
+			</match>
+		</divide-by>
+		<divide-by order="2">
+			<property>area</property>
+			<divide-style>rate</divide-style>
+		</divide-by>
+	</public-fee>
+			
+	<public-fee>
+		<name>light-fee</name>
+		<display-name>公共照明费</display-name>
+		<properties>
+			<property>
+		
+		
+		
+		-->
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+</fees>
