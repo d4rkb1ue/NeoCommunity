@@ -38,7 +38,9 @@ public class AddDosageAction extends ActionSupport {
 		// + electricityDosage + date);
 		// dosageService.addDosage(buildingID, floorID, roomID, waterDosage,
 		// electricityDosage, date + "-01");
-		feeService.calculate(Date.valueOf("2015-1-1"));
+		// feeService.calculate(Date.valueOf("2015-1-1"));
+		System.out.println("adddosage");
+		feeService.test();
 		return "success";
 	}
 

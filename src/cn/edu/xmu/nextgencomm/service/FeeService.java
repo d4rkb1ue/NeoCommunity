@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.edu.xmu.nextgencomm.dao.impl.DosageDaoImpl;
 import cn.edu.xmu.nextgencomm.dao.impl.FeeDaoImpl;
 import cn.edu.xmu.nextgencomm.model.Dosage;
-import cn.edu.xmu.nextgencomm.model.Fee;
 
 /**
  * 从数据库中读取数据，向计费器中传入数据，计算出费用详情
@@ -33,8 +32,9 @@ public class FeeService {
 
 	/** 一栋楼的水电用量信息 **/
 	private List<Map<String, Object>> dosages = new ArrayList<>();
+
 	/** 一栋楼的费用信息 **/
-	private List<Fee> fees = new ArrayList<Fee>();
+	// private List<Fee> fees = new ArrayList<Fee>();
 
 	/** 获取整栋楼的水电用量信息的匹配字符串 **/
 	private String getBuildString(int num) {
@@ -89,5 +89,32 @@ public class FeeService {
 			}
 			// 将dosages传入CalculatorService中
 		}
+	}
+
+	public void test() {
+		String[] array = { "water_fee", "水费", "01010101", "15" };
+		System.out.println(array.toString());
+		new CalculateService().createCalculators();
+		// List<String[]> fees = new ArrayList<>();
+		// fees.add(array);
+		//
+		// Iterator<String[]> iterator = fees.iterator();
+		// while (iterator.hasNext()) {
+		// String[] feeArray = iterator.next();
+		// Map<String, Object> feeMap = new HashMap<>();
+		// feeMap.put("serialNum", feeArray[2]);
+		// feeMap.put("date", Date.valueOf("2015-1-1"));
+		// feeMap.put("fee", feeArray[3]);
+		// feeMap.put("payStatus", false);
+		// feeDaoImpl.saveOrUpdate(feeArray[0], feeMap);
+
+		// Map<String, Object> feeMap = new HashMap<>();
+		// feeMap.put("serialNum", "01010101");
+		// feeMap.put("displayName", "水费");
+		// feeMap.put("date", Date.valueOf("2015-1-1"));
+		// feeMap.put("fee", 150.0);
+		// feeMap.put("payStatus", false);
+		// feeDaoImpl.saveOrUpdate("water_fee", feeMap);
+		// }
 	}
 }

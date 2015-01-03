@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../Css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../Css/bootstrap-responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../Css/style.css" />
+		<script type="text/javascript" src="../../Js/jquery.js"></script>
+		<script type="text/javascript" src="../../Js/jquery.sorted.js"></script>
+		<script type="text/javascript" src="../../Js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../Js/ckform.js"></script>
+		<script type="text/javascript" src="../../Js/common.js"></script>
+		<style type="text/css">
+			body {
+				padding-bottom: 40px;
+			}
+			.sidebar-nav {
+				padding: 9px 0;
+			}
+			@media (max-width: 980px) {
+				/* Enable use of floated navbar text */
+				
+				.navbar-text.pull-right {
+					float: none;
+					padding-left: 5px;
+					padding-right: 5px;
+				}
+			}
+			.newhead {
+				width: 100%;
+				text-align: center;
+				color: #1E90FF;
+				font-size: 23px;
+				font-family: "微软雅黑";
+				line-height: 40px;
+				font-weight: bold;
+			}
+			.unifiedlist {
+				display: none;
+			}
+			.ckbox {
+				margin-left: 50px;
+				/*display: none;*/
+			}
+			.dpinline{
+				display: inline;
+			}
+		</style>
+	</head>
+	<div class="newhead">
+		新增楼
+	</div>
+	<form action="#" method="#">
+		<table class="table table-bordered table-hover definewidth m10">
+			<tr>
+				<td width="10%" class="tableleft">楼名</td>
+				<td>
+					<input type="text" name="name" />
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">楼编号</td>
+				<td>
+					<input type="text" name="id" />
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">楼层数</td>
+				<td>
+					<input type="text" name="cengnum" />
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">地下停车场</td>
+				<td>
+					<input type="text" name="parking" />
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">布局图</td>
+				<td>
+					<button class="btn">上传</button>
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">水表编号</td>
+				<td>
+					<input type="text" name="waterID" />
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">电表编号</td>
+				<td>
+					<input type="text" name="electricityID" />
+				</td>
+			</tr>
+			<tr>
+				<td class="tableleft">统一创建？</td>
+				<td>
+					<!--<label><input type="radio" name="unifiednew" />YES</label>
+					<label><input type="radio" name="unifiednew" />NO</label>-->
+					<button class="btn" id="unifiedbtn">统一创建</button>
+				</td>
+			</tr>
+
+			<!--隐藏的部分-->
+			<tr class="unifiedlist">
+				<td width="10%" class="tableleft">每层房屋编号起止</td>
+				<td>
+					<input type="text" name="cengIDbegin" />&nbsp;&nbsp;到&nbsp;&nbsp;
+					<input type="text" name="cengIDover" />
+				</td>
+			</tr>
+			<tr class="unifiedlist">
+				<td class="tableleft">房屋面积</td>
+				<td>
+					<input type="text" name="area" />
+				</td>
+			</tr>
+			<tr class="unifiedlist">
+				<td class="tableleft">层水表编号</td>
+				<td>
+					<label class="dpinline">前缀：
+						<input type="text" name="cengwaterID" />
+						<label class="dpinline"><input type="checkbox" class="ckbox">前缀</label></label>
+					<label>起止：
+						<input type="text" name="waterIDbegin" />&nbsp;到&nbsp;
+						<input type="text" name="waterIDover" />
+					</label>
+
+				</td>
+			</tr>
+			<tr class="unifiedlist">
+				<td class="tableleft">层电表编号</td>
+				<td>
+					<label class="dpinline">前缀：
+						<input type="text" name="qianzui" />
+						<label class="dpinline"><input type="checkbox" class="ckbox">前缀</label></label>
+					<label>起止：
+						<input type="text" name="electricitybegin" />&nbsp;到&nbsp;
+						<input type="text" name="ecectricityover" />
+					</label>
+
+				</td>
+			</tr>
+			<tr class="unifiedlist">
+				<td class="tableleft">房型图</td>
+				<td>
+					<button class="btn button-success">上传</button>
+				</td>
+			</tr>
+			<tr class="unifiedlist">
+				<td class="tableleft">房屋水表编号</td>
+				<td>
+					<label>楼前缀
+						<input type="text" name="louqianzui" />
+					</label>
+					<label>层前缀
+						<input type="text" name="cengqianzui" />
+					</label>
+					<label>起止：
+						<input type="text" name="waterbegin" />&nbsp;到&nbsp;
+						<input type="text" name="waterover" />
+					</label>
+					<label class="dpinline">
+						格式：
+						<input type="text" name="geshi" />
+						<label class="dpinline"><input type="checkbox" />格式</label>
+					</label>
+				</td>
+			</tr>
+			<tr class="unifiedlist">
+				<td class="tableleft">房屋电表编号</td>
+				<td>
+					<label>楼前缀
+						<input type="text" name="louqianzui" />
+					</label>
+					<label>层前缀
+						<input type="text" name="cengqianzui" />
+					</label>
+					<label>起止：
+						<input type="text" name="lougegin" />&nbsp;到&nbsp;
+						<input type="text" name="louover" />
+					</label>
+					<label class="dpinline">
+						格式：
+						<input type="text" name="geshi" />
+						<label class="dpinline"><input type="checkbox" name="geshi" />格式</label>
+					</label>
+				</td>
+			</tr>
+
+
+
+
+			<tr>
+				<td class="tableleft"></td>
+				<td>
+					<button type="submit" class="btn btn-primary" type="button">保存</button>&nbsp;&nbsp;
+					<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+	</body>
+
+</html>
+<script>
+	$(function() {
+		$('#backid').click(function() {
+			window.location.href = "index.html";
+		});
+	});
+	$(document).ready(function() {
+		$("#unifiedbtn").click(function() {
+			$(".unifiedlist").toggle(1000);
+		});
+	});
+</script>

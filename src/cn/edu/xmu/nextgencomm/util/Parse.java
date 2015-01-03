@@ -102,11 +102,18 @@ public class Parse {
 		}
 	}
 
-	public void createCfgXml() throws IOException {
+	public void createCfgXml() throws IOException, URISyntaxException {
 		for (Map<String, Object> plain : calculators) {
 			// 输出文本文件
-			File f = new File("src" + File.separator + "entryConfig"
-					+ File.separator + (String) plain.get("name") + ".hbm.xml");
+			String realPath = this.getClass().getResource("/entityconfig")
+					.getPath();
+			// + (String) plain.get("name") + ".hbm.xml";
+			// File f = new File("E:" + File.separator + "files" +
+			// File.separator
+			// + (String) plain.get("name") + ".hbm.xml");
+			System.out.print(realPath);
+			File f = new File(new File(realPath), (String) plain.get("name")
+					+ ".hbm.xml");
 			FileOutputStream fop = new FileOutputStream(f);
 			// 构建FileOutputStream对象,文件不存在会自动新建
 

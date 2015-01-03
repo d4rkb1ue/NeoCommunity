@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../Css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../Css/bootstrap-responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../Css/style.css" />
+		<script type="text/javascript" src="../../Js/jquery.js"></script>
+		<script type="text/javascript" src="../../Js/jquery.sorted.js"></script>
+		<script type="text/javascript" src="../../Js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../Js/ckform.js"></script>
+		<script type="text/javascript" src="../../Js/common.js"></script>
+
+		<style type="text/css">
+			body {
+				padding-bottom: 40px;
+			}
+			.sidebar-nav {
+				padding: 9px 0;
+			}
+			@media (max-width: 980px) {
+				/* Enable use of floated navbar text */
+				
+				.navbar-text.pull-right {
+					float: none;
+					padding-left: 5px;
+					padding-right: 5px;
+				}
+			}
+			.newhead {
+				width: 100%;
+				text-align: center;
+				color: #1E90FF;
+				font-size: 23px;
+				font-family: "微软雅黑";
+				line-height: 40px;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="newhead">
+			修改小区信息
+		</div>
+		<form action="index.html" method="post" class="definewidth m10">
+			<input type="hidden" name="id" value="{$menu.id}" />
+			<table class="table table-bordered table-hover m10">
+				<tr>
+					<td width="10%" class="tableleft">小区名称</td>
+					<td>
+						<input type="text" name="name" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tableleft">小区地址</td>
+					<td>
+						<input type="text" name="address" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tableleft">邮政编码</td>
+					<td>
+						<input type="text" name="youbian" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tableleft">所属物业</td>
+					<td>
+						<input type="text" name="wuye" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tableleft">物业电话</td>
+					<td>
+						<input type="text" name="telephone" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tableleft">物业公司地址</td>
+					<td>
+						<input type="text" name="address" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tableleft">物业公司邮箱</td>
+					<td>
+						<input type="text" name="mail" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tableleft"></td>
+					<td>
+						<button type="submit" class="btn btn-primary" type="button">保存</button> &nbsp;&nbsp;
+						<button type="button" class="btn btn-success" name="backid" id="backid">返回列表</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+
+</html>
+<script>
+	$(function() {
+		$('#backid').click(function() {
+			window.location.href = "index.html";
+		});
+
+	});
+</script>

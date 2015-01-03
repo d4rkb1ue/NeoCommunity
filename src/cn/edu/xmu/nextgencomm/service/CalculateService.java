@@ -50,7 +50,7 @@ public class CalculateService {
 		}
 	}
 
-	private void createCalculators() {
+	public void createCalculators() {
 		// TODO Auto-generated method stub
 		CalculatorFactory calculatorFactory = new CalculatorFactory();
 		calculators = new ArrayList<Calculator>();

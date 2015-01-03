@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>费用详细信息</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../Css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../Css/bootstrap-responsive.css" />
+		<link rel="stylesheet" type="text/css" href="../../Css/style.css" />
+		<script type="text/javascript" src="../../Js/jquery.js"></script>
+		<script type="text/javascript" src="../../Js/jquery.sorted.js"></script>
+		<script type="text/javascript" src="../../Js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../Js/ckform.js"></script>
+		<script type="text/javascript" src="../../Js/common.js"></script>
+
+		<style type="text/css">
+			body {
+				padding-bottom: 40px;
+			}
+			.sidebar-nav {
+				padding: 9px 0;
+			}
+			@media (max-width: 980px) {
+				/* Enable use of floated navbar text */
+				
+				.navbar-text.pull-right {
+					float: none;
+					padding-left: 5px;
+					padding-right: 5px;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="newhead">
+			<span>费用详细信息</span>
+		</div>
+		<form class="form-inline definewidth m20" action="index.html" method="get">
+			费用名称：
+			<input type="text" name="menuname" id="menuname" class="abc input-default" placeholder="" value="">&nbsp;&nbsp;
+			<button type="submit" class="btn btn-primary">查询</button>&nbsp;&nbsp;
+		</form>
+		<table class="table table-bordered table-hover definewidth m10">
+			<!-- <thead>-->
+			<tr>
+				<th>项目</th>
+				<th>时间</th>
+				<th>单价</th>
+				<th>数量</th>
+				<th>金额</th>
+			</tr>
+			<!--</thead>-->
+			
+			<tr>
+				<td>个人水费</td>
+				<td>2014.12</td>
+				<td>1.5元/吨</td>
+				<td>10吨</td>
+				<td>15元</td>
+			</tr>
+			<tr>
+				<td>个人电费</td>
+				<td>2014.12</td>
+				<td>0.5元/度</td>
+				<td>120度</td>
+				<td>60元</td>
+			</tr>
+			<tr>
+				<td>物业费</td>
+				<td>2014.12</td>
+				<td>1.5元/平米</td>
+				<td>100平米</td>
+				<td>150元</td>
+			</tr>
+			<tr>
+				<td>停车费</td>
+				<td>2014.12</td>
+				<td>20元/天</td>
+				<td>15天</td>
+				<td>300元</td>
+			</tr>
+			<tr>
+				<td>垃圾处理费</td>
+				<td> 2014.12</td>
+				<td>15元/户</td>
+				<td> 1</td>
+				<td>15元</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td colspan="4">
+					<button type="button" class="btn btn-success">显示全部详细</button>
+					<button type="button" class="btn btn-primary ml30">确认</button>
+				</td>
+			</tr>
+		</table>
+
+	</body>
+
+</html>
+<script>
+	$(function() {
+
+
+		$('#addnew').click(function() {
+
+			window.location.href = "add.html";
+		});
+
+
+	});
+</script>
