@@ -1,9 +1,15 @@
 package cn.edu.xmu.nextgencomm.util;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,9 +20,9 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
-import org.eclipse.jdt.internal.compiler.ast.ThisReference;
 
 public class Parse {
 	public static String fileName = "example.xml";
@@ -26,12 +32,12 @@ public class Parse {
 	public Map<String, Double> itemsMap;
 
 	public void parse() {
+
 		SAXReader saxReader = new SAXReader();
 		try {
-			// System.out.println(System.getProperty("user.dir"));
-			System.out.println(this.getClass().getResource("/example.xml"));
 			File inputXml = new File(this.getClass()
 					.getResource("/" + fileName).toURI());
+
 			Document document = saxReader.read(inputXml);
 			Element fees = document.getRootElement();
 			// private-fee
@@ -83,9 +89,70 @@ public class Parse {
 				calculators.add(calcultor);
 				// System.out.println(calculators.toString());
 			}
-		} catch (Exception e) {
+			// create new *.cfg.xml
+			createCfgXml();
+		} catch (DocumentException e) {
 			System.out.println(e.getMessage());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
+	public void createCfgXml() throws IOException {
+		for (Map<String, Object> plain : calculators) {
+			// 输出文本文件
+			File f = new File("src" + File.separator + "entryConfig"
+					+ File.separator + (String) plain.get("name") + ".hbm.xml");
+			FileOutputStream fop = new FileOutputStream(f);
+			// 构建FileOutputStream对象,文件不存在会自动新建
+
+			OutputStreamWriter writer = new OutputStreamWriter(fop, "UTF-8");
+			// 构建OutputStreamWriter对象,参数可以指定编码,默认为操作系统默认编码,windows上是gbk
+
+			writer.append("<?xml version=\"1.0\"?>");
+			// 换行
+			writer.append("\r\n");
+
+			writer.append("<!DOCTYPE hibernate-mapping PUBLIC");
+			writer.append("\r\n");
+			writer.append("\"-//Hibernate/Hibernate Mapping DTD//EN\"");
+			writer.append("\r\n");
+			writer.append("\"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd\">");
+			writer.append("\r\n");
+			writer.append("<hibernate-mapping>");
+			writer.append("\r\n");
+			writer.append("<class entity-name=\"" + (String) plain.get("name")
+					+ "\">");
+			writer.append("\r\n");
+			writer.append("<composite-id>");
+			writer.append("\r\n");
+			writer.append("<key-property name=\"serialNum\" type=\"string\"></key-property>");
+			writer.append("\r\n");
+			writer.append("<key-property name=\"date\" type=\"java.sql.Date\"></key-property>");
+			writer.append("\r\n");
+			writer.append("</composite-id>");
+			writer.append("\r\n");
+			writer.append("<property name=\"displayName\" type=\"string\" not-null=\"true\" column=\"displayName\" />");
+			writer.append("\r\n");
+			writer.append("<property name=\"fee\" type=\"double\" not-null=\"true\" column=\"fee\" />");
+			writer.append("\r\n");
+			writer.append("<property name=\"payStatus\" type=\"boolean\" not-null=\"true\" column=\"payStatus\" />");
+			writer.append("\r\n");
+			writer.append("</class>");
+			writer.append("\r\n");
+			writer.append("</hibernate-mapping>");
+			writer.append("\r\n");
+			writer.append("");
+			writer.append("\r\n");
+			// 关闭写入流,同时会把缓冲区内容写入文件,所以上面的注释掉
+			writer.close();
+			fop.close();
+
+		}
+
+	}
 }

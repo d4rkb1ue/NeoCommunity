@@ -34,9 +34,9 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 		</property>
 		<property name="mappingLocations">
 			<list>
-				<value>classpath:Dosage.hbm.xml</value>
-				<value>classpath:Fee.hbm.xml</value>
-				<value>classpath:ParkingPort.hbm.xml</value>
+				<!-- <value>classpath:Dosage.hbm.xml</value> <value>classpath:Fee.hbm.xml</value> 
+					<value>classpath:ParkingPort.hbm.xml</value> -->
+				<value>classpath:entityconfig/*.hbm.xml</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

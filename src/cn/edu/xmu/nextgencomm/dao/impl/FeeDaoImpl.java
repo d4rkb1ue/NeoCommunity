@@ -3,6 +3,7 @@ package cn.edu.xmu.nextgencomm.dao.impl;
 import java.sql.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -98,6 +99,12 @@ public class FeeDaoImpl implements FeeDao {
 				session.clear();
 			}
 		}
+	}
+
+	@Override
+	public void saveOrUpdate(String tableName, Map<String, Object> map) {
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(tableName, map);
 	}
 
 }

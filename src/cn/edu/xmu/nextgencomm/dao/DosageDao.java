@@ -3,6 +3,8 @@ package cn.edu.xmu.nextgencomm.dao;
 import java.sql.Date;
 import java.util.List;
 
+import org.hibernate.Query;
+
 import cn.edu.xmu.nextgencomm.model.Dosage;
 
 public interface DosageDao {
@@ -33,5 +35,8 @@ public interface DosageDao {
 
 	/** 保存或更新集合中的所有对象 **/
 	public void saveOrUpdate(List<Dosage> eds);
+
+	/** 查询日期为date，且serialNum匹配string的对象 **/
+	public List<Dosage> get(Date date, String string);
 
 }

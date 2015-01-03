@@ -1,0 +1,8 @@
+/**
+ * 
+ */
+/**
+ * @author Blue
+ *
+ */
+package entityconfig;

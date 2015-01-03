@@ -31,58 +31,63 @@ public class FeeService {
 	@Autowired
 	private FeeDaoImpl feeDaoImpl;
 
-	/** 所有水电用量信息 **/
-	private List<Dosage> dosages;
-	/** 所有费用信息 **/
+	/** 一栋楼的水电用量信息 **/
+	private List<Map<String, Object>> dosages = new ArrayList<>();
+	/** 一栋楼的费用信息 **/
 	private List<Fee> fees = new ArrayList<Fee>();
 
+	/** 获取整栋楼的水电用量信息的匹配字符串 **/
+	private String getBuildString(int num) {
+		String result = "";
+		if (num < 10) {
+			result = "ww0" + String.valueOf(num) + "wwww";
+		} else {
+			result = "ww" + String.valueOf(num) + "wwww";
+		}
+		return result;
+	}
+
 	public void calculate(Date date) {
-		// 获取本月所有记录总数
-		int allCount = dosageDaoImpl.getCount(date);
-		for (int i = 0; allCount > 0; i++, allCount -= 20) {
-			fees.clear();
-			dosages = dosageDaoImpl.get(date, i * 20, 20);
-			Iterator<Dosage> iterator = dosages.iterator();
-			while (iterator.hasNext()) {
-				// 得到本月用量读数
-				Dosage currentDosage = iterator.next();
-				// 得到上月用量读数
-				Calendar calendar = Calendar.getInstance();
-				calendar.setTime(date);
-				calendar.add(Calendar.MONTH, -1);
-				Date preDate = new Date(calendar.getTime().getTime());
-				Dosage preDosage = dosageDaoImpl.get(
-						currentDosage.getSerialNum(), preDate);
-				// 计算本月用量数据
-				double waterDosage = currentDosage.getWaterDosage()
-						- preDosage.getWaterDosage();
-				double electricityDosage = currentDosage.getElectricityDosage()
-						- preDosage.getElectricityDosage();
-				double area = currentDosage.getHouse().getArea();
-				// 调用计算器计算费用
-				Map<String, Object> dosageMap = new HashMap<String, Object>();
+		int buildingNum = 5;
+		for (int i = 0; i < buildingNum; i++) {
+			dosages.clear();
+			// 本月用量读数
+			List<Dosage> currentDosages = dosageDaoImpl.get(date,
+					getBuildString(i));
+			// 上月用量读数
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(date);
+			calendar.add(Calendar.MONTH, -1);
+			Date preDate = new Date(calendar.getTime().getTime());
+			List<Dosage> preDosages = dosageDaoImpl.get(preDate,
+					getBuildString(i));
+			// 计算本月用量
+			Iterator<Dosage> currentDI = currentDosages.iterator();
+			while (currentDI.hasNext()) {
+				// 得到某个房间的本月读数和上月读数
+				Dosage currentDosage = currentDI.next();
+				Dosage preDosage = new Dosage();
+				Iterator<Dosage> preDI = preDosages.iterator();
+				while (preDI.hasNext()) {
+					preDosage = preDI.next();
+					if (currentDosage.getSerialNum() == preDosage
+							.getSerialNum()) {
+						break;
+					}
+				}
+				// 将该用户的数据放入Map中
+				Map<String, Object> dMap = new HashMap<String, Object>();
+				dMap.put("water-usage", currentDosage.getWaterDosage()
+						- preDosage.getWaterDosage());
+				dMap.put("electric-usage", currentDosage.getElectricityDosage()
+						- preDosage.getElectricityDosage());
+				dMap.put("area", currentDosage.getHouse().getArea());
 				Map<String, Integer> parking = new HashMap<String, Integer>();
-				dosageMap.put("water-usage", waterDosage);
-				dosageMap.put("electric-usage", electricityDosage);
-				dosageMap.put("area", area);
-				dosageMap.put("parking-port", parking);
-				System.out.println(dosageMap.toString());
-				Map<String, Double> feeMap = new CalculateService()
-						.getResult((HashMap<String, Object>) dosageMap);
-				System.out.println(feeMap.toString());
-				// 保存至数据库
-				Fee fee = new Fee();
-				fee.setSerialNum(currentDosage.getSerialNum());
-				fee.setDate(date);
-				fee.setWasteFee(feeMap.get("水费"));
-				fee.setElectricityFee(feeMap.get("电费"));
-				fee.setWasteFee(feeMap.get("垃圾处理费"));
-				fee.setCarportFee(feeMap.get("车位费"));
-				fee.setPropertyFee(feeMap.get("物业费"));
-				fee.setHouse(currentDosage.getHouse());
-				fees.add(fee);
+				dMap.put("parking-port", parking);
+				// 将Map对象放入List中
+				dosages.add(dMap);
 			}
-			feeDaoImpl.saveOrUpdate(fees);
+			// 将dosages传入CalculatorService中
 		}
 	}
 }

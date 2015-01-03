@@ -29,10 +29,10 @@ public class DosageDaoImpl implements DosageDao {
 	@Override
 	public List<Dosage> getByHouse(long house_id) {
 		Session session = sessionFactory.getCurrentSession();
-		List<Dosage> wds = (List<Dosage>) session
+		List<Dosage> dosages = (List<Dosage>) session
 				.createQuery("from Dosage where house_id = :house_ID")
 				.setLong("house_ID", house_id).list();
-		return wds;
+		return dosages;
 	}
 
 	@Override
@@ -52,8 +52,8 @@ public class DosageDaoImpl implements DosageDao {
 				.setDate("Date", date);
 		query.setFirstResult(start);
 		query.setMaxResults(offset);
-		List<Dosage> wds = (List<Dosage>) query.list();
-		return wds;
+		List<Dosage> dosages = (List<Dosage>) query.list();
+		return dosages;
 	}
 
 	@Override
@@ -81,8 +81,8 @@ public class DosageDaoImpl implements DosageDao {
 		Query query = session.createQuery("from Dosage");
 		query.setFirstResult(start);
 		query.setMaxResults(offset);
-		List<Dosage> wds = (List<Dosage>) query.list();
-		return wds;
+		List<Dosage> dosages = (List<Dosage>) query.list();
+		return dosages;
 	}
 
 	@Override
@@ -102,6 +102,16 @@ public class DosageDaoImpl implements DosageDao {
 				session.clear();
 			}
 		}
+	}
+
+	@Override
+	public List<Dosage> get(Date date, String string) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session
+				.createQuery("from Dosage where date = ? and serialNum like ?")
+				.setDate(0, date).setString(1, string);
+		List<Dosage> dosages = (List<Dosage>) query.list();
+		return dosages;
 	}
 
 }

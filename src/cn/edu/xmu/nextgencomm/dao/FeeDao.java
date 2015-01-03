@@ -2,6 +2,7 @@ package cn.edu.xmu.nextgencomm.dao;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 import cn.edu.xmu.nextgencomm.model.Fee;
 
@@ -33,4 +34,7 @@ public interface FeeDao {
 
 	/** 保存或更新集合中的对象 **/
 	public void saveOrUpdate(List<Fee> fees);
+
+	/** 保存对象 **/
+	public void saveOrUpdate(String tableName, Map<String, Object> map);
 }
