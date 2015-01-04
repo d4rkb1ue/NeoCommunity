@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="cn.edu.xmu.nextgencomm.model.House" lazy="false"
+		table="house">
+		<id name="id" column="house_id">
+			<generator class="native" />
+		</id>
+		<property name="serialNum" type="string" unique="true"
+			not-null="true" column="serialNum" />
+		<many-to-one name="floor" class="cn.edu.xmu.nextgencomm.model.Floor"
+			column="floor_id" not-null="true" cascade="none"></many-to-one>
+		<property name="area" type="double" column="area" />
+	</class>
+</hibernate-mapping>

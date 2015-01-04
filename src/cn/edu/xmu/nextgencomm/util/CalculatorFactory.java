@@ -3,35 +3,55 @@ package cn.edu.xmu.nextgencomm.util;
 import java.util.Map;
 
 public class CalculatorFactory {
-	Calculator calculator;
+	PrivateCalculatorUtil calculator;
+	ShareCalculatorUtil shareCalculator;
 
-	public Calculator createWithLadders(Map<Double, Double> ladder,
+	public PrivateCalculatorUtil createWithLadders(Map<Double, Double> ladder,
 			String name, String para, String display) {
 		// TODO Auto-generated method stub
-		calculator = new LadderCalculator(name, para, display, ladder);
+		calculator = new LadderCalculatorUtil(name, para, display, ladder);
 
 		return calculator;
 	}
 
-	public Calculator createWithItems(Map<String, Double> map, String name,
+	public PrivateCalculatorUtil createWithItems(Map<String, Double> map,
+			String name, String para, String display) {
+		// TODO Auto-generated method stub
+		calculator = new ItemCalculatorUtil(name, para, display, map);
+		return calculator;
+	}
+
+	public PrivateCalculatorUtil calculatorWithLine(String line, String name,
 			String para, String display) {
 		// TODO Auto-generated method stub
-		calculator = new ItemCalculator(name, para, display, map);
-		return calculator;
-	}
-
-	public Calculator calculatorWithLine(String line, String name, String para,
-			String display) {
-		// TODO Auto-generated method stub
-		calculator = new LinerCalculator(name, para, display, line);
+		calculator = new LinerCalculatorUtil(name, para, display, line);
 
 		return calculator;
 	}
 
-	public Calculator calculatorWithFix(String fix, String name, String para,
-			String display) {
+	public PrivateCalculatorUtil calculatorWithFix(String fix, String name,
+			String para, String display) {
 		// TODO Auto-generated method stub
-		calculator = new FixCalculator(name, para, display, fix);
+		calculator = new FixCalculatorUtil(name, para, display, fix);
 		return calculator;
+	}
+
+	public ShareCalculatorUtil createFloorCalculator(int meterId, String name,
+			String displayName, boolean isAreaWeight, String calulateStyle,
+			Object method) {
+		shareCalculator = new FloorCalculatorUtil(meterId, name, displayName,
+				isAreaWeight, calulateStyle, method);
+
+		return shareCalculator;
+	}
+
+	public ShareCalculatorUtil createBuilingCalculator(int meterId,
+			String name, String displayName, boolean isAreaWeight,
+			boolean isFloorWeight, Map<Integer, Double> floorWeight,
+			String calulateStyle, Object method) {
+		shareCalculator = new BuildingCalculatorUtil(meterId, name,
+				displayName, isAreaWeight, isFloorWeight, floorWeight,
+				calulateStyle, method);
+		return shareCalculator;
 	}
 }

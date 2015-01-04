@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.edu.xmu.nextgencomm.model.Floor" lazy="false"
+		table="floor">
+		<id name="id" column="floor_id">
+			<generator class="native" />
+		</id>
+		<property name="floorNum" type="int" not-null="true" column="floorNum" />
+		<many-to-one name="building" class="cn.edu.xmu.nextgencomm.model.Building"
+			column="building_id" not-null="true" cascade="none"></many-to-one>
+		<!-- <list name="houses" cascade="all"> <key column="house_id"></key> <index 
+			column="houseNum"></index> <one-to-many class="cn.edu.xmu.nextgencomm.model.House"></one-to-many> 
+			</list> -->
+	</class>
+</hibernate-mapping>

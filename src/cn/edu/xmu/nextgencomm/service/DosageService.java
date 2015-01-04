@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.xmu.nextgencomm.dao.impl.DosageDaoImpl;
@@ -16,6 +17,7 @@ import cn.edu.xmu.nextgencomm.model.Dosage;
  * @author Luyahui
  *
  */
+
 @Repository("dosageService")
 @Transactional
 public class DosageService {
@@ -46,13 +48,13 @@ public class DosageService {
 		if (!roomID.equals("0")) {
 			// 接收到的数据是业主房间的数据
 			Dosage dosage = new Dosage();
-			String serialNum = "01" + format(buildingID) + format(floorID)
+			String serialNum = "00" + format(buildingID) + format(floorID)
 					+ format(roomID);
 			dosage.setSerialNum(serialNum);
 			dosage.setWaterDosage(Double.parseDouble(waterDosage));
 			dosage.setElectricityDosage(Double.parseDouble(electricityDosage));
 			dosage.setDate(Date.valueOf(date));
-			dosage.setHouse(houseDaoImpl.get(serialNum));
+			dosage.setHouse(houseDaoImpl.get(serialNum).iterator().next());
 			dosageDaoImpl.saveOrUpdate(dosage);
 		} else if (!floorID.equals("0")) {
 			// 接收到的数据是单层公摊的数据
@@ -71,5 +73,10 @@ public class DosageService {
 			dosage.setDate(Date.valueOf(date));
 			dosageDaoImpl.saveOrUpdate(dosage);
 		}
+	}
+
+	public Dosage get(String seriaLNum, Date date) {
+		Dosage dosage = dosageDaoImpl.get(seriaLNum, date);
+		return dosage;
 	}
 }

@@ -8,7 +8,7 @@ public interface HouseDao {
 
 	public House get(long id);
 
-	public House get(String serialNum);
+	public List<House> get(String serialNum);
 
 	public void saveOrUpadate(House house);
 

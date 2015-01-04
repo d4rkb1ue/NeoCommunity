@@ -2,30 +2,20 @@ package cn.edu.xmu.nextgencomm.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "house")
 public class House implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "house_id")
+	/** 主键 **/
 	private long id;
-	@Column(name = "serialNum")
+	/** 统一编号 **/
 	private String serialNum;
-	@Column(name = "area")
-	private float area;
+	/** 房间号 **/
+	private int houseNum;
+	/** 所属的楼层 **/
+	Floor floor;
+	/** 房间面积 **/
+	private double area;
 
 	public long getId() {
 		return id;
@@ -43,11 +33,27 @@ public class House implements Serializable {
 		this.serialNum = serialNum;
 	}
 
-	public float getArea() {
+	public int getHouseNum() {
+		return houseNum;
+	}
+
+	public void setHouseNum(int houseNum) {
+		this.houseNum = houseNum;
+	}
+
+	public Floor getFloor() {
+		return floor;
+	}
+
+	public void setFloor(Floor floor) {
+		this.floor = floor;
+	}
+
+	public double getArea() {
 		return area;
 	}
 
-	public void setArea(float area) {
+	public void setArea(double area) {
 		this.area = area;
 	}
 }

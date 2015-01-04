@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import cn.edu.xmu.nextgencomm.dao.HouseDao;
 import cn.edu.xmu.nextgencomm.model.House;
 
-@Repository("houseDaoImpl")
+@Repository
 public class HouseDaoImpl implements HouseDao {
 
 	@Autowired
@@ -25,11 +25,11 @@ public class HouseDaoImpl implements HouseDao {
 	}
 
 	@Override
-	public House get(String serialNum) {
-		House house = (House) sessionFactory.getCurrentSession()
-				.createQuery("from House where serialNum = ?")
-				.setString(0, serialNum).uniqueResult();
-		return house;
+	public List<House> get(String serialNum) {
+		List<House> houses = (List<House>) sessionFactory.getCurrentSession()
+				.createQuery("from House where serialNum like ?")
+				.setString(0, serialNum).list();
+		return houses;
 	}
 
 	@Override

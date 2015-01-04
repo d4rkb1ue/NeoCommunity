@@ -2,7 +2,7 @@ package cn.edu.xmu.nextgencomm.util;
 
 import java.util.Map;
 
-public abstract class Calculator {
+public abstract class PrivateCalculatorUtil implements CalculatorUtil {
 	public static String CALCULATE_STYLE_LADDERS = "ladders";
 	public static String CALCULATE_STYLE_LINE = "line";
 	public static String CALCULATE_STYLE_ITEMS = "items";
@@ -14,7 +14,8 @@ public abstract class Calculator {
 	String displayName;
 	String para;
 
-	public Calculator(String name, String para, String display, Object method) {
+	public PrivateCalculatorUtil(String name, String para, String display,
+			Object method) {
 		this.name = name;
 		this.para = para;
 		this.displayName = display;
@@ -25,4 +26,13 @@ public abstract class Calculator {
 	public String getDisplayName() {
 		return displayName;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 }

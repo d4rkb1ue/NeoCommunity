@@ -87,6 +87,7 @@ public class DosageDaoImpl implements DosageDao {
 
 	@Override
 	public void saveOrUpdate(Dosage dosage) {
+		System.out.println(dosage.getDate().toString());
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(dosage);
 	}
@@ -107,6 +108,7 @@ public class DosageDaoImpl implements DosageDao {
 	@Override
 	public List<Dosage> get(Date date, String string) {
 		Session session = sessionFactory.getCurrentSession();
+		System.out.println(date.toString() + string);
 		Query query = session
 				.createQuery("from Dosage where date = ? and serialNum like ?")
 				.setDate(0, date).setString(1, string);

@@ -1,6 +1,8 @@
 eclipse.preferences.version=1
 encoding//WebContent/css/login.css=UTF-8
 encoding//WebContent/login.jsp=UTF-8
+encoding//src/cn/edu/xmu/nextgencomm/service/CalculateService.java=UTF-8
+encoding//src/cn/edu/xmu/nextgencomm/service/ShareCalculateService.java=UTF-8
 encoding//src/myapp.properties=UTF-8
 encoding/<project>=GBK
 encoding/init.txt=GBK

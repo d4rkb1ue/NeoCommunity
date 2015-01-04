@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.edu.xmu.nextgencomm.dao.FeeDao;
 import cn.edu.xmu.nextgencomm.model.Fee;
@@ -103,8 +104,8 @@ public class FeeDaoImpl implements FeeDao {
 
 	@Override
 	public void saveOrUpdate(String tableName, Map<String, Object> map) {
+		System.out.println("tablename:" + tableName + "map:" + map.toString());
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(tableName, map);
 	}
-
 }

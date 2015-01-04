@@ -8,14 +8,13 @@
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.custom.i18n.resources" value="myapp" />
 	<package name="default" extends="struts-default">
-		<action name="*" class="login" method="execute">
-			<result name="success">/index.jsp</result>
-			<result name="fail">/login.jsp</result>
-		</action>
-	</package>
-	<package name="neo" extends="struts-default" namespace="/">
+		<!-- <action name="login" class="login" method="execute"> <result name="success">/index.jsp</result> 
+			<result name="fail">/login.jsp</result> </action> -->
 		<action name="login" class="login" method="execute">
-			<result name="success">/index.jsp</result>
+			<result name="admin" type="redirect">/admin_index.html</result>
+			<result name="officer" type="redirect">/officer_index.html</result>
+			<result name="owner" type="redirect">/owner_index.html</result>
+			<result name="security" type="redirect">/security_index.html</result>
 			<result name="fail">/login.jsp</result>
 		</action>
 		<action name="addHouse" class="addHouse" method="execute">
@@ -23,6 +22,12 @@
 		</action>
 		<action name="addDosage" class="addDosage">
 			<result name="success">addhouse.html</result>
+		</action>
+		<action name="test" class="test">
+			<result name="success"></result>
+		</action>
+		<action name="importDosage" class="cn.edu.xmu.nextgencomm.action.ImportDosageAction">
+			<result name="success">import.jsp</result>
 		</action>
 	</package>
 </struts>

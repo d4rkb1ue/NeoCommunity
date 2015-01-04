@@ -1,6 +1,7 @@
 package cn.edu.xmu.nextgencomm.action;
 
 import java.sql.Date;
+import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -31,6 +32,23 @@ public class AddDosageAction extends ActionSupport {
 	@Autowired
 	private FeeService feeService;
 
+	/** 获取当前日期 **/
+	private Date getCurrentDate() {
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.DAY_OF_MONTH, 1);
+		Date date = new Date(calendar.getTime().getTime());
+		return date;
+	}
+
+	/** 获取上月日期 **/
+	private Date getPreDate() {
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.MONTH, -1);
+		calendar.set(Calendar.DAY_OF_MONTH, 1);
+		Date date = new Date(calendar.getTime().getTime());
+		return date;
+	}
+
 	@Override
 	public String execute() throws Exception {
 		// 保存对象到数据库
@@ -38,9 +56,8 @@ public class AddDosageAction extends ActionSupport {
 		// + electricityDosage + date);
 		// dosageService.addDosage(buildingID, floorID, roomID, waterDosage,
 		// electricityDosage, date + "-01");
-		// feeService.calculate(Date.valueOf("2015-1-1"));
-		System.out.println("adddosage");
-		feeService.test();
+		System.out.println(getCurrentDate().toString());
+		feeService.calculate(getCurrentDate());
 		return "success";
 	}
 

@@ -7,16 +7,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class LadderCalculator extends Calculator {
+public class LadderCalculatorUtil extends PrivateCalculatorUtil {
 
 	Map<Double, Double> levels;
 	ArrayList<Double> keys;
-	public LadderCalculator(String name, String para, String display,
+	public LadderCalculatorUtil(String name, String para, String display,
 			Object method) {
 		super(name, para, display, method);
 		// TODO Auto-generated constructor stub
 		levels=(Map<Double, Double>)method;
-		//ÄæÐò
+		//ï¿½ï¿½ï¿½ï¿½
 		keys=new ArrayList<Double>();
 		for (Map.Entry<Double, Double> entry : levels.entrySet()) {
 			keys.add(0, entry.getKey());

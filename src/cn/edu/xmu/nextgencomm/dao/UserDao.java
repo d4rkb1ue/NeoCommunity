@@ -1,10 +1,6 @@
 package cn.edu.xmu.nextgencomm.dao;
 
-import java.util.List;
-
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +16,11 @@ public class UserDao {
 	public User getUser(UserBean userBean) {
 		Session session = sessionFactory.getCurrentSession();
 
-		String qu = "select distinct u from User u where username = :username";
-		List users = session.createQuery(qu)
-				.setString("username", userBean.getUserName()).list();
-		if (users.isEmpty())
-			return null;
-
-		return (User) users.get(0);
-
+		String qu = "from User u where username = ? and password = ?";
+		User user = (User) session.createQuery(qu)
+				.setString(0, userBean.getUsername())
+				.setString(1, userBean.getPassword()).uniqueResult();
+		return user;
 	}
 
 	public void saveUser(User user) {

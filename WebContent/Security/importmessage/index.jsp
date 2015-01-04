@@ -1,8 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html>
 
 <head>
-<title>导出登记表</title>
+<title>选择输入项目</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css" />
 <link rel="stylesheet" type="text/css"
@@ -16,6 +19,27 @@
 <script type="text/javascript" src="../../js/ckform.js"></script>
 <script type="text/javascript" src="../../js/common.js"></script>
 
+<script>
+	$(function() {
+
+		$('#commit').click(function() {
+			window.location.href = "importDosage";
+		});
+
+	});
+
+	function del(id) {
+
+		if (confirm("确定要删除吗？")) {
+
+			var url = "index.html";
+
+			window.location.href = url;
+
+		}
+
+	}
+</script>
 <style type="text/css">
 body {
 	padding-bottom: 40px;
@@ -47,7 +71,7 @@ body {
 
 <body>
 	<div class="newhead">
-		<span>导出登记表</span>
+		<span>选择输入项目</span>
 	</div>
 	<table class="table table-bordered table-hover definewidth m10">
 		<thead>
@@ -75,8 +99,8 @@ body {
 					</label> <label class="ckbox"> <input type="checkbox"
 						name="quanxuanlou" />全选
 					</label>
+				</div>
 			</td>
-			</div>
 		</tr>
 		<tr>
 			<td>水电表</td>
@@ -98,40 +122,20 @@ body {
 		</tr>
 		<tr>
 			<td>输出选择</td>
-			<td><label> <input type="radio" name="ouput">公共表单独列出
-			</label> <br /> <label> <input type="radio" name="ouput">列出上期数据
+			<td><label class="ml10"> <input type="radio"
+					name="ouput">公共表单独列出
+			</label> <br /> <label class="ml10"> <input type="radio"
+					name="ouput">列出上期数据
 			</label></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td>
-				<button type="submit" class="btn btn-success ml10">打印</button>
+				<button type="submit" class="btn btn-primary ml10" id="commit">确认</button>
+				<button type="button" class="btn btn-success ml30">打印已录入信息</button>
 			</td>
 		</tr>
 	</table>
 
 </body>
-
 </html>
-<script>
-	$(function() {
-
-		$('#show').click(function() {
-
-			window.location.href = "showmessage.html";
-		});
-
-	});
-
-	function del(id) {
-
-		if (confirm("确定要删除吗？")) {
-
-			var url = "index.html";
-
-			window.location.href = url;
-
-		}
-
-	}
-</script>

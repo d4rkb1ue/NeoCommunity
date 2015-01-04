@@ -3,9 +3,9 @@ package cn.edu.xmu.nextgencomm.util;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class ItemCalculator extends Calculator{
+public class ItemCalculatorUtil extends PrivateCalculatorUtil{
 	Map<String, Double> map;
-	public ItemCalculator(String name, String para, String display,
+	public ItemCalculatorUtil(String name, String para, String display,
 			Object method) {
 		super(name, para, display, method);
 		// TODO Auto-generated constructor stub

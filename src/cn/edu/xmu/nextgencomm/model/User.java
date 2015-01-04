@@ -1,48 +1,86 @@
 package cn.edu.xmu.nextgencomm.model;
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "user")
-public class User implements Serializable {
-	private static final long serialVersionUID = 1L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	private Long userid;
-	@Column(name = "username")
-	private String userName;
-	@Column(name = "password")
+public class User {
+	/** 主键 **/
+	private long id;
+	/** 用户名 **/
+	private String username;
+	/** 密码 **/
 	private String password;
-	//注意关键字冲突 "group"是不能使用的
-	@Column(name = "usergroup")
-	private String group;
-	
-	public String getUserName() {
-		return userName;
+	/** 姓名 **/
+	private String name;
+	/** 性别 **/
+	/** 身份证号 **/
+	private String idCard;
+	/** 联系电话 **/
+	private String phone;
+	/** 邮箱地址 **/
+	private String email;
+	/** 用户分组 **/
+	private String usergroup;
+
+	public long getId() {
+		return id;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+
+	public void setId(long id) {
+		this.id = id;
 	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getGroup() {
-		return group;
-	}
-	public void setGroup(String group) {
-		this.group = group;
+
+	public String getName() {
+		return name;
 	}
 
-	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getIdCard() {
+		return idCard;
+	}
+
+	public void setIdCard(String idCard) {
+		this.idCard = idCard;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getUsergroup() {
+		return usergroup;
+	}
+
+	public void setUsergroup(String usergroup) {
+		this.usergroup = usergroup;
+	}
+
 }

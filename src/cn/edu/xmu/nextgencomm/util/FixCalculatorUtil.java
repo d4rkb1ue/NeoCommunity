@@ -2,10 +2,10 @@ package cn.edu.xmu.nextgencomm.util;
 
 import java.util.Map;
 
-public class FixCalculator extends Calculator {
+public class FixCalculatorUtil extends PrivateCalculatorUtil {
 	public double fixFee;
 
-	public FixCalculator(String name, String para, String display, Object method) {
+	public FixCalculatorUtil(String name, String para, String display, Object method) {
 		super(name, para, display, method);
 		
 		fixFee = 0;

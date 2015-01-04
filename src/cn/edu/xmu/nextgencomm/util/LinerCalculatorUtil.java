@@ -2,9 +2,9 @@ package cn.edu.xmu.nextgencomm.util;
 
 import java.util.Map;
 
-public class LinerCalculator extends Calculator{
+public class LinerCalculatorUtil extends PrivateCalculatorUtil{
 	double k;
-	public LinerCalculator(String name, String para, String display,
+	public LinerCalculatorUtil(String name, String para, String display,
 			Object method) {
 		super(name, para, display, method);
 		// TODO Auto-generated constructor stub

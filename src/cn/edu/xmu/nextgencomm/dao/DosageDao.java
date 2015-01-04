@@ -3,8 +3,6 @@ package cn.edu.xmu.nextgencomm.dao;
 import java.sql.Date;
 import java.util.List;
 
-import org.hibernate.Query;
-
 import cn.edu.xmu.nextgencomm.model.Dosage;
 
 public interface DosageDao {

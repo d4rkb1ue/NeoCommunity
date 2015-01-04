@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="cn.edu.xmu.nextgencomm.model.User" lazy="false"
+		table="user">
+		<id name="id" column="user_id">
+			<generator class="native" />
+		</id>
+		<property name="username" type="string" unique="true"
+			not-null="true" column="username" />
+		<property name="password" type="string" not-null="true"
+			column="password" />
+		<property name="name" type="string" column="name" />
+		<property name="idCard" type="string" unique="true" column="idCard" />
+		<property name="phone" type="string" unique="true" column="phone" />
+		<property name="email" type="string" unique="true" column="email" />
+		<property name="usergroup" type="string" column="usergroup" />
+	</class>
+</hibernate-mapping>

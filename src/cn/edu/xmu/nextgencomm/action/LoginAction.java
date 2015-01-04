@@ -23,11 +23,19 @@ public class LoginAction extends ActionSupport implements ModelDriven<UserBean> 
 	private static final long serialVersionUID = 1L;
 
 	public String execute() {
+		System.out.println(userBean.getUsername() + userBean.getPassword());
 		user = userService.getUser(userBean);
 		if (user != null) {
-			return "success";
+			if (user.getUsergroup().equals("admin")) {
+				return "admin";
+			} else if (user.getUsergroup().equals("officer")) {
+				return "officer";
+			} else if (user.getUsergroup().equals("owner")) {
+				return "owner";
+			} else if (user.getUsergroup().equals("security")) {
+				return "security";
+			}
 		}
-		// System.out.println("Fail");
 		return "fail";
 
 	}
